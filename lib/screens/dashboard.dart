@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:tab_container/tab_container.dart';
-import 'package:vegetable_app/screens/qr_code_scanner.dart';
-import 'package:vegetable_app/screens/history.dart';
-import 'package:vegetable_app/screens/side_drawer.dart';
-import 'package:vegetable_app/screens/statistics_screen.dart';
+import 'package:safed/screens/qr_code_scanner.dart';
+import 'package:safed/screens/history.dart';
+import 'package:safed/screens/side_drawer.dart';
+import 'package:safed/screens/statistics_screen.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -24,9 +24,7 @@ class _DashboardState extends State<Dashboard> {
 
   @override
   void didChangeDependencies() {
-    textTheme = Theme
-        .of(context)
-        .textTheme;
+    textTheme = Theme.of(context).textTheme;
     super.didChangeDependencies();
   }
 
@@ -39,16 +37,18 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer:DrawerScreen(),
+      drawer: DrawerScreen(),
       backgroundColor: Colors.grey,
       appBar: AppBar(
-        actions: [IconButton(onPressed: (){}, icon: Icon(Icons.doorbell_outlined))],
+        actions: [
+          IconButton(onPressed: () {}, icon: Icon(Icons.doorbell_outlined))
+        ],
         title: const Text('Dasboard'),
         backgroundColor: Colors.grey,
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(20,10,0,10),
+          padding: const EdgeInsets.fromLTRB(20, 10, 0, 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -59,16 +59,12 @@ class _DashboardState extends State<Dashboard> {
                     fontSize: 40,
                     fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 10,),
               SizedBox(
-                height: MediaQuery
-                    .of(context)
-                    .size
-                    .height *0.8,
-                width: MediaQuery
-                    .of(context)
-                    .size
-                    .width * 0.9,
+                height: 10,
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.8,
+                width: MediaQuery.of(context).size.width * 0.9,
                 child: TabContainer(
                   radius: 20,
                   tabEdge: TabEdge.top,
@@ -94,21 +90,16 @@ class _DashboardState extends State<Dashboard> {
                     Colors.white,
                   ],
                   selectedTextStyle:
-                  textTheme.bodyText2?.copyWith(fontSize: 15.0),
+                      textTheme.bodyText2?.copyWith(fontSize: 15.0),
                   unselectedTextStyle:
-                  textTheme.bodyText2?.copyWith(fontSize: 13.0),
-                  tabs: const [
-                    'My QR Code',
-                    'Scan','History','Graph'
-                  ],
+                      textTheme.bodyText2?.copyWith(fontSize: 13.0),
+                  tabs: const ['My QR Code', 'Scan', 'History', 'Graph'],
                   children: [
                     Center(
                       child: Container(
-                        decoration:BoxDecoration(
-                            borderRadius: BorderRadius.circular(10)
-                        ),
-                        child: Image.asset('assets/img.png')
-                      ),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Image.asset('assets/img.png')),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -116,7 +107,6 @@ class _DashboardState extends State<Dashboard> {
                     ),
                     HistoryScreen(),
                     Statistics(),
-
                   ],
                 ),
               ),
