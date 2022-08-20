@@ -1,5 +1,7 @@
 // select_language
 import 'package:flutter/material.dart';
+import 'package:safed/farmer_registration/f_registration4.dart';
+import 'package:safed/farmer_registration/f_registration5.dart';
 
 import 'confirmation_screen.dart';
 
@@ -71,7 +73,7 @@ class _DealerScreenState extends State<DealerScreen> {
                 ),
                 onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Confirmation()));
+                      MaterialPageRoute(builder: (context) => BestFarmersScreen()));
                 },
                 child: const Padding(
                   padding: EdgeInsets.all(8.0),
@@ -96,7 +98,7 @@ class _DealerScreenState extends State<DealerScreen> {
                 ),
                 onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Confirmation()));
+                      MaterialPageRoute(builder: (context) => DealerScreen2()));
                 },
                 child: const Padding(
                   padding: EdgeInsets.all(8.0),

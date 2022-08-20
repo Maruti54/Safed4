@@ -16,13 +16,6 @@ class _SelectLanguageState extends State<SelectLanguage> {
     return Scaffold(
       backgroundColor: const Color(0xFFEEEEEE),
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            Icons.arrow_back,
-            color: Colors.black,
-          ),
-        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
