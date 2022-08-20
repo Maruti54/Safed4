@@ -1,7 +1,10 @@
 // Login Screen
 
 import 'package:flutter/material.dart';
-import 'package:safed/screens/dashboard.dart';
+import 'package:safed/farmer_registration/f_registration5.dart';
+import 'package:safed/screens/best_proceessor.dart';
+import 'package:safed/screens/collector_dashboard.dart';
+import 'package:safed/screens/producer_dashboard.dart';
 import 'package:safed/screens/register.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -13,6 +16,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   var _value;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -94,7 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Container(
               padding: const EdgeInsets.all(15),
               margin: const EdgeInsets.only(
-                  top: 10, left: 25, right: 25, bottom: 10),
+                  top: 5, left: 25, right: 25, bottom: 5),
               height: 75,
               decoration: BoxDecoration(
                   border: Border.all(color: Colors.grey.shade400),
@@ -119,6 +123,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     width: MediaQuery.of(context).size.width * 0.465,
                   ),
                   Radio(
+                    toggleable: true,
                     value: 0,
                     groupValue: _value,
                     onChanged: (value) {
@@ -134,7 +139,8 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             Container(
               padding: const EdgeInsets.all(15),
-              margin: const EdgeInsets.only(left: 25, right: 25),
+              margin: const EdgeInsets.only(
+                top: 5, left: 25, right: 25, bottom: 5),
               height: 75,
               decoration: BoxDecoration(
                   border: Border.all(color: Colors.grey.shade400),
@@ -159,6 +165,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     width: MediaQuery.of(context).size.width * 0.47,
                   ),
                   Radio(
+                    toggleable: true,
                     value: 1,
                     groupValue: _value,
                     onChanged: (value) {
@@ -172,8 +179,50 @@ class _LoginScreenState extends State<LoginScreen> {
                 ],
               ),
             ),
+            Container(
+              padding: const EdgeInsets.all(15),
+              margin: const EdgeInsets.only(
+                  top: 5, left: 25, right: 25, bottom: 5),
+              height: 75,
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey.shade400),
+                  borderRadius: BorderRadius.circular(8)),
+              child: Row(
+                children: [
+                  Column(
+                    children: const [
+                      Text('Dealer',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                          )),
+                      Text('Vegetable Dealer',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 10,
+                          )),
+                    ],
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.47,
+                  ),
+                  Radio(
+                    toggleable: true,
+                    value: 2,
+                    groupValue: _value,
+                    onChanged: (value) {
+                      setState(() {
+                        _value = value;
+                      });
+                    },
+                    fillColor: MaterialStateColor.resolveWith(
+                        (states) => const Color(0xFF20BCDE)),
+                  ),
+                ],
+              ),
+            ),
             const SizedBox(
-              height: 70,
+              height: 50,
             ),
             GestureDetector(
               onTap: () {
@@ -189,8 +238,22 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Center(
                       child: GestureDetector(
                     onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Dashboard()));
+                      if (_value == 0) {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ProducerDashboard()));
+                      } else if (_value == 1) {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => CollectorDashboard()));
+                      } else {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => BestProcessorScreen()));
+                      }
                     },
                     child: Text(
                       'Login',

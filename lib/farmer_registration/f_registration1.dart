@@ -3,15 +3,16 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:flutter/material.dart';
 
+import 'f_registration2.dart';
 
-class DataEntryScreen extends StatefulWidget {
-  const DataEntryScreen({Key? key}) : super(key: key);
+class FRegistrationScreen1 extends StatefulWidget {
+  const FRegistrationScreen1({Key? key}) : super(key: key);
 
   @override
-  State<DataEntryScreen> createState() => _DataEntryScreenState();
+  State<FRegistrationScreen1> createState() => _FRegistrationScreen1State();
 }
 
-class _DataEntryScreenState extends State<DataEntryScreen> {
+class _FRegistrationScreen1State extends State<FRegistrationScreen1> {
   int _count1 = 0;
   int _count2 = 0;
 
@@ -36,16 +37,16 @@ class _DataEntryScreenState extends State<DataEntryScreen> {
 
   void decrement2() {
     setState(() {
-
       _count2--;
     });
   }
+
   List<Widget> Card = [
-   VegetableCard(),
-   VegetableCard(),
-   VegetableCard(),
-   VegetableCard(),
-   VegetableCard(),
+    VegetableCard(),
+    VegetableCard(),
+    VegetableCard(),
+    VegetableCard(),
+    VegetableCard(),
   ];
   int activeIndex = 0;
   @override
@@ -80,7 +81,10 @@ class _DataEntryScreenState extends State<DataEntryScreen> {
               padding: EdgeInsets.all(20.0),
               child: Text(
                 'Hello,Siddhant !',
-                style: TextStyle(color: Colors.black, fontSize: 40, fontWeight: FontWeight.w500),
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 40,
+                    fontWeight: FontWeight.w500),
               ),
             ),
             Row(
@@ -104,7 +108,8 @@ class _DataEntryScreenState extends State<DataEntryScreen> {
                         color: Colors.black.withOpacity(0.2),
                         spreadRadius: 1,
                         blurRadius: 2,
-                        offset: const Offset(2, 3), // changes position of shadow
+                        offset:
+                            const Offset(2, 3), // changes position of shadow
                       ),
                     ],
                   ),
@@ -119,7 +124,8 @@ class _DataEntryScreenState extends State<DataEntryScreen> {
                           ))),
                       Text(
                         '${_count1}',
-                        style: const TextStyle(color: Colors.black, fontSize: 18),
+                        style:
+                            const TextStyle(color: Colors.black, fontSize: 18),
                       ),
                       IconButton(
                           onPressed: increment1,
@@ -156,7 +162,8 @@ class _DataEntryScreenState extends State<DataEntryScreen> {
                         color: Colors.black.withOpacity(0.2),
                         spreadRadius: 1,
                         blurRadius: 2,
-                        offset: const Offset(2, 3), // changes position of shadow
+                        offset:
+                            const Offset(2, 3), // changes position of shadow
                       ),
                     ],
                   ),
@@ -171,13 +178,14 @@ class _DataEntryScreenState extends State<DataEntryScreen> {
                           ))),
                       Text(
                         '${_count2}',
-                        style: const TextStyle(color: Colors.black, fontSize: 18),
+                        style:
+                            const TextStyle(color: Colors.black, fontSize: 18),
                       ),
                       IconButton(
                         onPressed: increment2,
                         icon: (const Icon(
                           Icons.add,
-                          color:  Color(0xFF20BCDE),
+                          color: Color(0xFF20BCDE),
                         )),
                       ),
                     ],
@@ -185,81 +193,104 @@ class _DataEntryScreenState extends State<DataEntryScreen> {
                 ),
               ],
             ),
-            const SizedBox(height: 15,),
-            const Padding(
-              padding: EdgeInsets.only(top: 10.0,left: 15),
-              child: Text('Specify Your Vegetables',style: TextStyle(color: Colors.black,fontSize: 20,fontWeight: FontWeight.w500),),
+            const SizedBox(
+              height: 15,
             ),
-            Stack(
-                children: [
-                  Center(
-                      child: CarouselSlider.builder(
-                        carouselController: controller,
-                        options: CarouselOptions(
-                          height: 280,
-                          enableInfiniteScroll: false,
-                          onPageChanged: (index, reason) {
-                            setState(() {
-                              activeIndex = index;
-                            });
-                          }
-                        ),
-                        itemCount: Card.length,
-                        itemBuilder: (context, index, realIndex) {
-                          final card = Card[index];
-                          return VegetableCard();
-                        },
-                      )),
-
-
-                  Positioned(
-                      top: 130,
-                      left: 25,
-                      child: GestureDetector(
-                        onTap: (){
-                          controller.previousPage(duration: const Duration(milliseconds: 300));
-                          setState(() {
-
-                          });
-                        },
-                        child: Container(
-                          height: 30,
-                          width: 30,
-                          decoration: BoxDecoration(color: Colors.grey[400], borderRadius: BorderRadius.circular(50)),
-                          child: const Icon(Icons.arrow_back_ios_new),
-                        ),
-                      )),
-                  Positioned(
-                    right: 25,
-                    top: 130,
-                    child: InkWell(
-                      onTap: (){
-                        controller.nextPage(duration: const Duration(milliseconds: 300));
-                        setState(() {});
-                      },
-                      child: Container(
-                        height: 30,
-                        width: 30,
-                        decoration: BoxDecoration(color: Colors.grey[400], borderRadius: BorderRadius.circular(50)),
-                        child: const Icon(Icons.arrow_forward_ios),
-                      ),
+            const Padding(
+              padding: EdgeInsets.only(top: 10.0, left: 15),
+              child: Text(
+                'Specify Your Vegetables',
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500),
+              ),
+            ),
+            Stack(children: [
+              Center(
+                  child: CarouselSlider.builder(
+                carouselController: controller,
+                options: CarouselOptions(
+                    height: 280,
+                    enableInfiniteScroll: false,
+                    onPageChanged: (index, reason) {
+                      setState(() {
+                        activeIndex = index;
+                      });
+                    }),
+                itemCount: Card.length,
+                itemBuilder: (context, index, realIndex) {
+                  final card = Card[index];
+                  return VegetableCard();
+                },
+              )),
+              Positioned(
+                  top: 130,
+                  left: 25,
+                  child: GestureDetector(
+                    onTap: () {
+                      controller.previousPage(
+                          duration: const Duration(milliseconds: 300));
+                      setState(() {});
+                    },
+                    child: Container(
+                      height: 30,
+                      width: 30,
+                      decoration: BoxDecoration(
+                          color: Colors.grey[400],
+                          borderRadius: BorderRadius.circular(50)),
+                      child: const Icon(Icons.arrow_back_ios_new),
                     ),
+                  )),
+              Positioned(
+                right: 25,
+                top: 130,
+                child: InkWell(
+                  onTap: () {
+                    controller.nextPage(
+                        duration: const Duration(milliseconds: 300));
+                    setState(() {});
+                  },
+                  child: Container(
+                    height: 30,
+                    width: 30,
+                    decoration: BoxDecoration(
+                        color: Colors.grey[400],
+                        borderRadius: BorderRadius.circular(50)),
+                    child: const Icon(Icons.arrow_forward_ios),
                   ),
-
-                ]),
+                ),
+              ),
+            ]),
             Center(child: buildIndicator()),
-            SizedBox(height: 25,),
+            SizedBox(
+              height: 25,
+            ),
             Center(
-              child:GestureDetector(
-                onTap: (){},
+              child: GestureDetector(
+                onTap: () {},
                 child: Container(
                   height: 45,
                   width: 170,
                   decoration: BoxDecoration(
-                    color: Color(0xFF20BCDE),
-                    borderRadius: BorderRadius.circular(10.0)
+                      color: Color(0xFF20BCDE),
+                      borderRadius: BorderRadius.circular(10.0)),
+                  child: Center(
+                    child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => DealerScreen()));
+                        },
+                        child: Text(
+                          'Save',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 22,
+                              letterSpacing: 3),
+                        )),
                   ),
-                  child: Center(child: Text('Save',style: TextStyle(color: Colors.white,fontSize: 22,letterSpacing: 3),),),
                 ),
               ),
             )
@@ -268,10 +299,15 @@ class _DataEntryScreenState extends State<DataEntryScreen> {
       ),
     );
   }
-  Widget buildIndicator(){
-    return AnimatedSmoothIndicator(activeIndex: activeIndex, count: Card.length,);
+
+  Widget buildIndicator() {
+    return AnimatedSmoothIndicator(
+      activeIndex: activeIndex,
+      count: Card.length,
+    );
   }
 }
+
 class VegetableCard extends StatefulWidget {
   const VegetableCard({Key? key}) : super(key: key);
 
@@ -280,11 +316,19 @@ class VegetableCard extends StatefulWidget {
 }
 
 class _VegetableCardState extends State<VegetableCard> {
-  List<String> _vegetables = ['Carrots', 'Potato', 'Tomato', 'Onions', 'Broccoli', 'Mushroom', 'Lettuce', 'Capsicum'];
+  List<String> _vegetables = [
+    'Carrots',
+    'Potato',
+    'Tomato',
+    'Onions',
+    'Broccoli',
+    'Mushroom',
+    'Lettuce',
+    'Capsicum'
+  ];
   var SelectedItem;
   @override
   Widget build(BuildContext context) {
-
     return Padding(
       padding: const EdgeInsets.all(22.0),
       child: Container(
@@ -304,7 +348,9 @@ class _VegetableCardState extends State<VegetableCard> {
         ),
         child: Column(
           children: [
-            SizedBox(height: 15,),
+            SizedBox(
+              height: 15,
+            ),
             Center(
               child: Padding(
                 padding: const EdgeInsets.only(top: 22.0),
@@ -319,14 +365,14 @@ class _VegetableCardState extends State<VegetableCard> {
                   child: DropdownButton(
                     value: SelectedItem,
                     items: _vegetables
-                        .map((vegetable) =>
-                        DropdownMenuItem(
-                          value: vegetable,
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 20),
-                            child: Text(vegetable),
-                          ),
-                        )).toList(),
+                        .map((vegetable) => DropdownMenuItem(
+                              value: vegetable,
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 20),
+                                child: Text(vegetable),
+                              ),
+                            ))
+                        .toList(),
                     onChanged: (vegetable) {
                       setState(() {
                         SelectedItem = vegetable;
@@ -334,20 +380,22 @@ class _VegetableCardState extends State<VegetableCard> {
                     },
                     icon: Padding(
                       padding: const EdgeInsets.only(right: 8.0),
-                      child: Icon(Icons.keyboard_arrow_down, size: 30, color: Colors.grey[600]),
+                      child: Icon(Icons.keyboard_arrow_down,
+                          size: 30, color: Colors.grey[600]),
                     ),
                     isExpanded: true,
                     hint: const Padding(
                       padding: const EdgeInsets.only(left: 20.0),
                       child: Text('Select vegetable'),
-
                     ),
                     underline: const SizedBox(),
                   ),
                 ),
               ),
             ),
-            SizedBox(height: 15,),
+            SizedBox(
+              height: 15,
+            ),
             Padding(
               padding: const EdgeInsets.all(15.0),
               child: Container(
@@ -363,7 +411,6 @@ class _VegetableCardState extends State<VegetableCard> {
                     ),
                     hintText: 'Daily Avg. Production',
                     contentPadding: EdgeInsets.only(top: 1.0),
-
                   ),
                   cursorHeight: 20,
                   textAlign: TextAlign.center,
@@ -385,7 +432,6 @@ class _VegetableCardState extends State<VegetableCard> {
                     ),
                     hintText: 'Nickname',
                     contentPadding: EdgeInsets.only(top: 1.0),
-
                   ),
                   cursorHeight: 20,
                   textAlign: TextAlign.center,

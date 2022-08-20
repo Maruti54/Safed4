@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
 
+import '../farmer_registration/f_registration1.dart';
+
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({Key? key}) : super(key: key);
 
@@ -240,6 +242,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     width: MediaQuery.of(context).size.width * 0.4,
                   ),
                   Radio(
+                    toggleable: true,
                     value: 0,
                     groupValue: _value,
                     onChanged: (value) {
@@ -281,7 +284,50 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     width: MediaQuery.of(context).size.width * 0.41,
                   ),
                   Radio(
+                    toggleable: true,
                     value: 1,
+                    groupValue: _value,
+                    onChanged: (value) {
+                      setState(() {
+                        _value = value;
+                      });
+                    },
+                    fillColor: MaterialStateColor.resolveWith((states) => const Color(0xFF20BCDE)),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.02,
+            ),
+            Container(
+              padding: const EdgeInsets.all(15),
+              margin: const EdgeInsets.only(left: 25, right: 25),
+              height: 70,
+              decoration: BoxDecoration(border: Border.all(color: Colors.grey.shade600), borderRadius: BorderRadius.circular(8)),
+              child: Row(
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text('Dealer',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                          )),
+                      Text('Vegetable Dealer',
+                          style: TextStyle(
+                            color: Colors.grey[700],
+                            fontSize: 12,
+                          )),
+                    ],
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.41,
+                  ),
+                  Radio(
+                    toggleable: true,
+                    value: 2,
                     groupValue: _value,
                     onChanged: (value) {
                       setState(() {
@@ -297,7 +343,15 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               height: 70,
             ),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                if(_value==0)
+                  {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => FRegistrationScreen1()));
+                  }
+              },
               child: Center(
                 child: Container(
                   width: 170,
