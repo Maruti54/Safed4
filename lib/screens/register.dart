@@ -40,19 +40,23 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
     if (permission == LocationPermission.deniedForever) {
       // Permissions are denied forever, handle appropriately.
-      return Future.error('Location permissions are permanently denied, we cannot request permissions.');
+      return Future.error(
+          'Location permissions are permanently denied, we cannot request permissions.');
     }
 
     // When we reach here, permissions are granted and we can
     // continue accessing the position of the device.
-    return await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    return await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
   }
 
   Future<void> GetAddressFromLatLong(Position position) async {
-    List<Placemark> placemarks = await placemarkFromCoordinates(position.latitude, position.longitude);
+    List<Placemark> placemarks =
+        await placemarkFromCoordinates(position.latitude, position.longitude);
     print(placemarks);
     Placemark place = placemarks[0];
-    Address = '${place.street}, ${place.subLocality}, ${place.locality}, ${place.postalCode}, ${place.country}';
+    Address =
+        '${place.street}, ${place.subLocality}, ${place.locality}, ${place.postalCode}, ${place.country}';
     print(Address);
     setState(() {});
   }
@@ -62,7 +66,13 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     return Scaffold(
       backgroundColor: const Color(0xFFEEEEEE),
       appBar: AppBar(
-        leading: IconButton(onPressed: (){},icon: const Icon(Icons.arrow_back,color: Colors.black,),),
+        leading: IconButton(
+          onPressed: () {},
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+          ),
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
@@ -74,11 +84,14 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               padding: EdgeInsets.symmetric(horizontal: 30, vertical: 5),
               child: Text(
                 'Register',
-                style: TextStyle(color: Colors.black, fontSize: 35, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 35,
+                    fontWeight: FontWeight.bold),
               ),
             ),
             const SizedBox(
-              height: 15,
+              height: 14,
             ),
             Container(
               padding: const EdgeInsets.only(left: 25, right: 25),
@@ -88,6 +101,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 elevation: 2.0,
                 borderRadius: BorderRadius.circular(22.0),
                 child: TextField(
+                  
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderSide: const BorderSide(
@@ -114,7 +128,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               ),
             ),
             const SizedBox(
-              height: 25,
+              height: 14,
             ),
             Container(
               padding: const EdgeInsets.only(left: 25, right: 25),
@@ -147,7 +161,40 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               ),
             ),
             const SizedBox(
-              height: 25,
+              height: 14,
+            ),
+            Container(
+              padding: const EdgeInsets.only(left: 25, right: 25),
+              height: 35,
+              child: Material(
+                elevation: 2.0,
+                borderRadius: BorderRadius.circular(22.0),
+                child: TextField(
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(
+                        color: Colors.grey,
+                        width: 0.0,
+                      ),
+                      borderRadius: BorderRadius.circular(22.0),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(
+                        color: Colors.grey,
+                        width: 0.0,
+                      ),
+                      borderRadius: BorderRadius.circular(22.0),
+                    ),
+                    contentPadding: const EdgeInsets.only(top: 5, left: 35),
+                    hintText: 'Enter the Password',
+                    hintStyle: TextStyle(color: Colors.grey[600]),
+                  ),
+                  style: TextStyle(color: Colors.grey[900]),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 14,
             ),
             Container(
               padding: const EdgeInsets.only(left: 25, right: 25),
@@ -173,22 +220,26 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       borderRadius: BorderRadius.circular(22.0),
                     ),
                     contentPadding: const EdgeInsets.only(top: 5, left: 35),
-                    hintText: 'Enter Your location',
+                    hintText: 'Location',
                     hintStyle: TextStyle(color: Colors.grey[600]),
                     suffix: GestureDetector(
                       onTap: () async {
                         _getGeoLocationPosition();
                         Position position = await _getGeoLocationPosition();
-                        location = 'Lat: ${position.latitude} , Long: ${position.longitude}';
+                        location =
+                            'Lat: ${position.latitude} , Long: ${position.longitude}';
                         GetAddressFromLatLong(position);
-                        setState(() {
-                        });
+                        setState(() {});
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(6.0),
                         child: RichText(
                           text: const TextSpan(children: [
-                            TextSpan(text: 'Detect Automatically', style: TextStyle(color: Color(0xFF20BCDE), decoration: TextDecoration.underline)),
+                            TextSpan(
+                                text: 'Detect Automatically',
+                                style: TextStyle(
+                                    color: Color(0xFF20BCDE),
+                                    decoration: TextDecoration.underline)),
                             WidgetSpan(
                               child: Icon(
                                 Icons.gps_fixed,
@@ -206,7 +257,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               ),
             ),
             const SizedBox(
-              height: 50,
+              height: 25,
             ),
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 30, vertical: 5),
@@ -218,10 +269,14 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             ),
             Container(
               padding: const EdgeInsets.all(15),
-              margin: const EdgeInsets.only(top: 10, left: 25, right: 25, bottom: 10),
+              margin: const EdgeInsets.only(
+                  top: 10, left: 25, right: 25, bottom: 10),
               height: 70,
-              decoration: BoxDecoration(border: Border.all(color: Colors.grey.shade600), borderRadius: BorderRadius.circular(8)),
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey.shade600),
+                  borderRadius: BorderRadius.circular(8)),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -231,7 +286,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             color: Colors.black,
                             fontSize: 20,
                           )),
-                      Text('Vegetable Farmer',
+                      Text('Dairy Farmer',
                           style: TextStyle(
                             color: Colors.grey[700],
                             fontSize: 12,
@@ -250,38 +305,36 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         _value = value;
                       });
                     },
-                    fillColor: MaterialStateColor.resolveWith((states) => const Color(0xFF20BCDE)),
+                    fillColor: MaterialStateColor.resolveWith(
+                        (states) => const Color(0xFF20BCDE)),
                   ),
                 ],
               ),
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.02,
             ),
             Container(
               padding: const EdgeInsets.all(15),
               margin: const EdgeInsets.only(left: 25, right: 25),
               height: 70,
-              decoration: BoxDecoration(border: Border.all(color: Colors.grey.shade600), borderRadius: BorderRadius.circular(8)),
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey.shade600),
+                  borderRadius: BorderRadius.circular(8)),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text('Dealer',
+                      const Text('Exporter',
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 20,
                           )),
-                       Text('Vegetable Dealer',
+                      Text('Milk Exporter',
                           style: TextStyle(
                             color: Colors.grey[700],
                             fontSize: 12,
                           )),
                     ],
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.41,
                   ),
                   Radio(
                     toggleable: true,
@@ -292,7 +345,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         _value = value;
                       });
                     },
-                    fillColor: MaterialStateColor.resolveWith((states) => const Color(0xFF20BCDE)),
+                    fillColor: MaterialStateColor.resolveWith(
+                        (states) => const Color(0xFF20BCDE)),
                   ),
                 ],
               ),
@@ -304,26 +358,26 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               padding: const EdgeInsets.all(15),
               margin: const EdgeInsets.only(left: 25, right: 25),
               height: 70,
-              decoration: BoxDecoration(border: Border.all(color: Colors.grey.shade600), borderRadius: BorderRadius.circular(8)),
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey.shade600),
+                  borderRadius: BorderRadius.circular(8)),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text('Dealer',
+                      const Text('Importer',
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 20,
                           )),
-                      Text('Vegetable Dealer',
+                      Text('Milk Importer',
                           style: TextStyle(
                             color: Colors.grey[700],
                             fontSize: 12,
                           )),
                     ],
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.41,
                   ),
                   Radio(
                     toggleable: true,
@@ -334,35 +388,36 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         _value = value;
                       });
                     },
-                    fillColor: MaterialStateColor.resolveWith((states) => const Color(0xFF20BCDE)),
+                    fillColor: MaterialStateColor.resolveWith(
+                        (states) => const Color(0xFF20BCDE)),
                   ),
                 ],
               ),
             ),
             const SizedBox(
-              height: 70,
+              height: 20,
             ),
             GestureDetector(
               onTap: () {
-                if(_value==0)
-                  {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => FRegistrationScreen1()));
-                  }
+                if (_value == 0) {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => FRegistrationScreen1()));
+                }
               },
               child: Center(
                 child: Container(
                   width: 170,
                   height: 50,
-                  decoration: BoxDecoration(color: const Color(0xFF20BCDE), borderRadius: BorderRadius.circular(10)),
+                  decoration: BoxDecoration(
+                      color: const Color(0xFF20BCDE),
+                      borderRadius: BorderRadius.circular(10)),
                   child: const Center(
                       child: Text(
-                        'Register',
-                        style: TextStyle(color: Colors.white, fontSize: 28),
-                      )),
-
+                    'Register',
+                    style: TextStyle(color: Colors.white, fontSize: 28),
+                  )),
                 ),
               ),
             ),
@@ -381,9 +436,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 Padding(
                   padding: const EdgeInsets.all(5.0),
                   child: InkWell(
-                      onTap: () {
-
-                      },
+                      onTap: () {},
                       child: const Text(
                         'Login',
                         style: TextStyle(color: Color(0xFF20BCDE)),

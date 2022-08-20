@@ -13,41 +13,38 @@ class FRegistrationScreen1 extends StatefulWidget {
 }
 
 class _FRegistrationScreen1State extends State<FRegistrationScreen1> {
-  int _count1 = 0;
-  int _count2 = 0;
+  int _count1 = 1;
 
   final controller = CarouselController();
   void increment1() {
     setState(() {
       _count1++;
-    });
-  }
-
-  void increment2() {
-    setState(() {
-      _count2++;
+      AddCard();
     });
   }
 
   void decrement1() {
     setState(() {
-      _count1--;
+      if (_count1 > 1) {
+        _count1--;
+        RemoceCard();
+      }
     });
   }
 
-  void decrement2() {
+  AddCard() {
     setState(() {
-      _count2--;
+      Card.add(MilkCard());
     });
   }
 
-  List<Widget> Card = [
-    VegetableCard(),
-    VegetableCard(),
-    VegetableCard(),
-    VegetableCard(),
-    VegetableCard(),
-  ];
+  RemoceCard() {
+    setState(() {
+      Card.removeLast();
+    });
+  }
+
+  List<Widget> Card = [MilkCard()];
   int activeIndex = 0;
   @override
   Widget build(BuildContext context) {
@@ -91,7 +88,7 @@ class _FRegistrationScreen1State extends State<FRegistrationScreen1> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text(
-                  'Enter Number of Vegetables',
+                  'Enter Number of Cattles',
                   style: TextStyle(color: Colors.black, fontSize: 17),
                 ),
                 const SizedBox(
@@ -99,7 +96,7 @@ class _FRegistrationScreen1State extends State<FRegistrationScreen1> {
                 ),
                 Container(
                   height: 35,
-                  width: 110,
+                  width: 120,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(22.0),
@@ -123,7 +120,7 @@ class _FRegistrationScreen1State extends State<FRegistrationScreen1> {
                             color: Color(0xFF20BCDE),
                           ))),
                       Text(
-                        '${_count1}',
+                        '$_count1',
                         style:
                             const TextStyle(color: Colors.black, fontSize: 18),
                       ),
@@ -141,65 +138,10 @@ class _FRegistrationScreen1State extends State<FRegistrationScreen1> {
             const SizedBox(
               height: 15,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                const Padding(
-                  padding: EdgeInsets.only(left: 25.0, right: 45),
-                  child: Text(
-                    'Enter Number of freezers',
-                    style: TextStyle(color: Colors.black, fontSize: 17),
-                  ),
-                ),
-                Container(
-                  height: 35,
-                  width: 110,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(22.0),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.2),
-                        spreadRadius: 1,
-                        blurRadius: 2,
-                        offset:
-                            const Offset(2, 3), // changes position of shadow
-                      ),
-                    ],
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      IconButton(
-                          onPressed: decrement2,
-                          icon: (const Icon(
-                            Icons.remove,
-                            color: Color(0xFF20BCDE),
-                          ))),
-                      Text(
-                        '${_count2}',
-                        style:
-                            const TextStyle(color: Colors.black, fontSize: 18),
-                      ),
-                      IconButton(
-                        onPressed: increment2,
-                        icon: (const Icon(
-                          Icons.add,
-                          color: Color(0xFF20BCDE),
-                        )),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 15,
-            ),
             const Padding(
               padding: EdgeInsets.only(top: 10.0, left: 15),
               child: Text(
-                'Specify Your Vegetables',
+                'Specify Your Milks',
                 style: TextStyle(
                     color: Colors.black,
                     fontSize: 20,
@@ -221,7 +163,7 @@ class _FRegistrationScreen1State extends State<FRegistrationScreen1> {
                 itemCount: Card.length,
                 itemBuilder: (context, index, realIndex) {
                   final card = Card[index];
-                  return VegetableCard();
+                  return MilkCard();
                 },
               )),
               Positioned(
@@ -308,15 +250,15 @@ class _FRegistrationScreen1State extends State<FRegistrationScreen1> {
   }
 }
 
-class VegetableCard extends StatefulWidget {
-  const VegetableCard({Key? key}) : super(key: key);
+class MilkCard extends StatefulWidget {
+  const MilkCard({Key? key}) : super(key: key);
 
   @override
-  State<VegetableCard> createState() => _VegetableCardState();
+  State<MilkCard> createState() => _MilkCardState();
 }
 
-class _VegetableCardState extends State<VegetableCard> {
-  List<String> _vegetables = [
+class _MilkCardState extends State<MilkCard> {
+  List<String> _Milks = [
     'Carrots',
     'Potato',
     'Tomato',
@@ -355,7 +297,7 @@ class _VegetableCardState extends State<VegetableCard> {
               child: Padding(
                 padding: const EdgeInsets.only(top: 22.0),
                 child: Container(
-                  width: 250,
+                  width: 210,
                   height: 35,
                   padding: const EdgeInsets.all(6),
                   decoration: BoxDecoration(
@@ -364,18 +306,16 @@ class _VegetableCardState extends State<VegetableCard> {
                   ),
                   child: DropdownButton(
                     value: SelectedItem,
-                    items: _vegetables
-                        .map((vegetable) => DropdownMenuItem(
-                              value: vegetable,
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 20),
-                                child: Text(vegetable),
-                              ),
-                            ))
-                        .toList(),
-                    onChanged: (vegetable) {
+                    items: _Milks.map((Milk) => DropdownMenuItem(
+                          value: Milk,
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 20),
+                            child: Text(Milk),
+                          ),
+                        )).toList(),
+                    onChanged: (Milk) {
                       setState(() {
-                        SelectedItem = vegetable;
+                        SelectedItem = Milk;
                       });
                     },
                     icon: Padding(
@@ -386,7 +326,7 @@ class _VegetableCardState extends State<VegetableCard> {
                     isExpanded: true,
                     hint: const Padding(
                       padding: const EdgeInsets.only(left: 20.0),
-                      child: Text('Select vegetable'),
+                      child: Text('Select Milk'),
                     ),
                     underline: const SizedBox(),
                   ),

@@ -97,13 +97,14 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             Container(
               padding: const EdgeInsets.all(15),
-              margin: const EdgeInsets.only(
-                  top: 5, left: 25, right: 25, bottom: 5),
+              margin:
+                  const EdgeInsets.only(top: 5, left: 25, right: 25, bottom: 5),
               height: 75,
               decoration: BoxDecoration(
                   border: Border.all(color: Colors.grey.shade400),
                   borderRadius: BorderRadius.circular(8)),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
                     children: const [
@@ -112,16 +113,16 @@ class _LoginScreenState extends State<LoginScreen> {
                             color: Colors.black,
                             fontSize: 20,
                           )),
-                      Text('Vegetable Farmer',
+                      Text('Milk Farmer',
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 10,
                           )),
                     ],
                   ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.465,
-                  ),
+                  // SizedBox(
+                  //   width: MediaQuery.of(context).size.width * 0.42,
+                  // ),
                   Radio(
                     toggleable: true,
                     value: 0,
@@ -139,30 +140,28 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             Container(
               padding: const EdgeInsets.all(15),
-              margin: const EdgeInsets.only(
-                top: 5, left: 25, right: 25, bottom: 5),
+              margin:
+                  const EdgeInsets.only(top: 5, left: 25, right: 25, bottom: 5),
               height: 75,
               decoration: BoxDecoration(
                   border: Border.all(color: Colors.grey.shade400),
                   borderRadius: BorderRadius.circular(8)),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
                     children: const [
-                      Text('Dealer',
+                      Text('Exporter',
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 20,
                           )),
-                      Text('Vegetable Dealer',
+                      Text('Dairy Exporter',
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 10,
                           )),
                     ],
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.47,
                   ),
                   Radio(
                     toggleable: true,
@@ -181,30 +180,28 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             Container(
               padding: const EdgeInsets.all(15),
-              margin: const EdgeInsets.only(
-                  top: 5, left: 25, right: 25, bottom: 5),
+              margin:
+                  const EdgeInsets.only(top: 5, left: 25, right: 25, bottom: 5),
               height: 75,
               decoration: BoxDecoration(
                   border: Border.all(color: Colors.grey.shade400),
                   borderRadius: BorderRadius.circular(8)),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
                     children: const [
-                      Text('Dealer',
+                      Text('Importer',
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 20,
                           )),
-                      Text('Vegetable Dealer',
+                      Text('Dairy Importer',
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 10,
                           )),
                     ],
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.47,
                   ),
                   Radio(
                     toggleable: true,
