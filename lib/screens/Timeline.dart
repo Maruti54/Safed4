@@ -25,26 +25,27 @@ class _TimelineScreenState extends State<TimelineScreen> {
             child: Padding(
               padding: EdgeInsets.all(15.0),
               child: Text(
-                'Timeline of Vegetable',
-                style: TextStyle(color: Colors.black, fontSize: 30, fontWeight: FontWeight.w500),
+                'Timeline of milk',
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 30,
+                    fontWeight: FontWeight.w500),
               ),
             ),
           ),
-          const SizedBox(
-            height: 2
-          ),
+          const SizedBox(height: 2),
           GestureDetector(
-            onTap: (){},
+            onTap: () {},
             child: Container(
               height: 30,
               width: 30,
               decoration: BoxDecoration(
-                color: Colors.grey[400],
-                borderRadius: BorderRadius.circular(50)
+                  color: Colors.grey[400],
+                  borderRadius: BorderRadius.circular(50)),
+              child: Center(
+                child: Icon(Icons.keyboard_arrow_up_outlined),
               ),
-              child: Center(child: Icon(Icons.keyboard_arrow_up_outlined),
             ),
-    ),
           ),
           const SizedBox(
             height: 10,
@@ -53,7 +54,9 @@ class _TimelineScreenState extends State<TimelineScreen> {
             child: Container(
               height: 500,
               width: 320,
-              decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(22.0)),
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(22.0)),
               child: SingleChildScrollView(
                 child: Column(
                   children: [
@@ -63,7 +66,15 @@ class _TimelineScreenState extends State<TimelineScreen> {
                         child: TimelineNode(
                           indicator: Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: TimelineCard(const Color(0xFFEAEAEA), '12 Kg','3 C','0.4','75%', '13:23:23', '12/2/22', Colors.black),
+                            child: TimelineCard(
+                                const Color(0xFFEAEAEA),
+                                '12 Kg',
+                                '3 C',
+                                '0.4',
+                                '75%',
+                                '13:23:23',
+                                '12/2/22',
+                                Colors.black),
                           ),
                           startConnector: const SolidLineConnector(
                             color: Colors.grey,
@@ -80,7 +91,15 @@ class _TimelineScreenState extends State<TimelineScreen> {
                         child: TimelineNode(
                           indicator: Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: TimelineCard(const Color(0xFFEAEAEA), '15 Kg','13 C','0.1','95%', '13:23:23', '12/2/22', Colors.black),
+                            child: TimelineCard(
+                                const Color(0xFFEAEAEA),
+                                '15 Kg',
+                                '13 C',
+                                '0.1',
+                                '95%',
+                                '13:23:23',
+                                '12/2/22',
+                                Colors.black),
                           ),
                           startConnector: const SolidLineConnector(
                             color: Colors.grey,
@@ -97,7 +116,15 @@ class _TimelineScreenState extends State<TimelineScreen> {
                         child: TimelineNode(
                           indicator: Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: TimelineCard(const Color(0xFFEAEAEA), '20 Kg','23 C','0.8','65%', '13:23:23', '12/2/22', Colors.black),
+                            child: TimelineCard(
+                                const Color(0xFFEAEAEA),
+                                '20 Kg',
+                                '23 C',
+                                '0.8',
+                                '65%',
+                                '13:23:23',
+                                '12/2/22',
+                                Colors.black),
                           ),
                           startConnector: const SolidLineConnector(
                             color: Colors.grey,
@@ -114,7 +141,15 @@ class _TimelineScreenState extends State<TimelineScreen> {
                         child: TimelineNode(
                           indicator: Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: TimelineCard(const Color(0xFFEAEAEA), '16 Kg','35 C','0.2','50%', '13:23:23', '12/2/22', Colors.black),
+                            child: TimelineCard(
+                                const Color(0xFFEAEAEA),
+                                '16 Kg',
+                                '35 C',
+                                '0.2',
+                                '50%',
+                                '13:23:23',
+                                '12/2/22',
+                                Colors.black),
                           ),
                           startConnector: const SolidLineConnector(
                             color: Colors.grey,
@@ -131,7 +166,15 @@ class _TimelineScreenState extends State<TimelineScreen> {
                         child: TimelineNode(
                           indicator: Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: TimelineCard(const Color(0xFFEAEAEA), '12 Kg','3 C','0.4','75%', '13:23:23', '12/2/22', Colors.black),
+                            child: TimelineCard(
+                                const Color(0xFFEAEAEA),
+                                '12 Kg',
+                                '3 C',
+                                '0.4',
+                                '75%',
+                                '13:23:23',
+                                '12/2/22',
+                                Colors.black),
                           ),
                           startConnector: const SolidLineConnector(
                             color: Colors.grey,
@@ -147,23 +190,20 @@ class _TimelineScreenState extends State<TimelineScreen> {
               ),
             ),
           ),
-          const SizedBox(
-              height: 7
-          ),
+          const SizedBox(height: 7),
           GestureDetector(
-            onTap: (){},
+            onTap: () {},
             child: Container(
               height: 30,
               width: 30,
               decoration: BoxDecoration(
                   color: Colors.grey[400],
-                  borderRadius: BorderRadius.circular(50)
-              ),
-              child: Center(child: Icon(Icons.keyboard_arrow_down_outlined),
+                  borderRadius: BorderRadius.circular(50)),
+              child: Center(
+                child: Icon(Icons.keyboard_arrow_down_outlined),
               ),
             ),
           ),
-
         ],
       ),
     );
@@ -180,7 +220,8 @@ class TimelineCard extends StatelessWidget {
   final String Date;
   final Color fontcolor;
 
-  TimelineCard(this.cardcolor, this.Quantity,this.Temp,this.Ripeness,this.Freshness, this.Time, this.Date, this.fontcolor);
+  TimelineCard(this.cardcolor, this.Quantity, this.Temp, this.Ripeness,
+      this.Freshness, this.Time, this.Date, this.fontcolor);
 
   @override
   Widget build(BuildContext context) {
@@ -245,9 +286,13 @@ class TimelineCard extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 10.0, top: 10),
                 child: RichText(
                   text: const TextSpan(children: [
-                    TextSpan(text: 'more info', style: TextStyle(color: Color(0xFF20BCDE), fontSize: 10)),
+                    TextSpan(
+                        text: 'more info',
+                        style:
+                            TextStyle(color: Color(0xFF20BCDE), fontSize: 10)),
                     WidgetSpan(
-                      child: Icon(Icons.arrow_forward, size: 10, color: Color(0xFF20BCDE)),
+                      child: Icon(Icons.arrow_forward,
+                          size: 10, color: Color(0xFF20BCDE)),
                     ),
                   ]),
                 ),
@@ -275,14 +320,16 @@ class TimelineCard extends StatelessWidget {
                   ),
                 ],
               ),
-                const SizedBox(height: 50,),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20.0),
-                  child: Text(
+              const SizedBox(
+                height: 50,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 20.0),
+                child: Text(
                   'Raigad,pune',
                   style: TextStyle(color: Colors.grey[600], fontSize: 10),
-              ),
                 ),
+              ),
             ],
           ),
         ],

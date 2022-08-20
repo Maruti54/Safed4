@@ -54,7 +54,7 @@ class _DealerScreenState extends State<DealerScreen> {
           const Padding(
             padding: EdgeInsets.only(left: 25.0, top: 5),
             child: Text(
-              'A person you can deliver vegetable',
+              'A person you can deliver milk',
               style: TextStyle(color: Color(0xFF20BCDE), fontSize: 13),
             ),
           ),
@@ -72,8 +72,10 @@ class _DealerScreenState extends State<DealerScreen> {
                   elevation: MaterialStateProperty.all(10),
                 ),
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => BestFarmersScreen()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => BestFarmersScreen()));
                 },
                 child: const Padding(
                   padding: EdgeInsets.all(8.0),

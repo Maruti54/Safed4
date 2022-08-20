@@ -1,4 +1,6 @@
 // register
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
@@ -16,6 +18,41 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   var _value;
   String location = 'Null, Press Button';
   String Address = '';
+  TextEditingController name = TextEditingController();
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
+  TextEditingController locationc = TextEditingController();
+  final user = FirebaseAuth.instance.currentUser!;
+
+  Future signUp() async {
+    showDialog(
+        context: context,
+        builder: (context) => const Center(
+              child: CircularProgressIndicator(),
+            ));
+
+    try {
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email.text.trim(),
+        password: password.text.trim(),
+      );
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future createUser() async {
+    final docUser =
+        FirebaseFirestore.instance.collection('farmers').doc(email.text.trim());
+    final json = {
+      'email': email.text.trim(),
+      'name': name.text.trim(),
+      'location': locationc.text.trim(),
+    };
+
+    await docUser.set(json);
+  }
+
   Future<Position> _getGeoLocationPosition() async {
     bool serviceEnabled;
     LocationPermission permission;
@@ -101,7 +138,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 elevation: 2.0,
                 borderRadius: BorderRadius.circular(22.0),
                 child: TextField(
-                  
+                  controller: name,
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderSide: const BorderSide(
@@ -137,6 +174,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 elevation: 2.0,
                 borderRadius: BorderRadius.circular(22.0),
                 child: TextField(
+                  controller: email,
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderSide: const BorderSide(
@@ -153,7 +191,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       borderRadius: BorderRadius.circular(22.0),
                     ),
                     contentPadding: const EdgeInsets.only(top: 5, left: 35),
-                    hintText: 'Enter the Phone No.',
+                    hintText: 'Enter the email',
                     hintStyle: TextStyle(color: Colors.grey[600]),
                   ),
                   style: TextStyle(color: Colors.grey[900]),
@@ -170,6 +208,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 elevation: 2.0,
                 borderRadius: BorderRadius.circular(22.0),
                 child: TextField(
+                  controller: password,
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderSide: const BorderSide(
@@ -203,7 +242,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 elevation: 2.0,
                 borderRadius: BorderRadius.circular(22.0),
                 child: TextFormField(
-                  controller: TextEditingController()..text = '${Address}',
+                  controller: locationc,
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderSide: const BorderSide(
@@ -398,7 +437,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               height: 20,
             ),
             GestureDetector(
-              onTap: () {
+              onTap: () async {
+                await signUp();
+                await createUser();
                 if (_value == 0) {
                   Navigator.push(
                       context,

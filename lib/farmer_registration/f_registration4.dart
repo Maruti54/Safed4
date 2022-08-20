@@ -15,7 +15,14 @@ class _DealerScreen2State extends State<DealerScreen2> {
     return Scaffold(
       backgroundColor: const Color(0xFFEEEEEE),
       appBar: AppBar(
-        leading: InkWell(onTap: (){Navigator.pop(context);},child:  Icon(Icons.arrow_back,color: Colors.black,)),
+        leading: InkWell(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: Icon(
+              Icons.arrow_back,
+              color: Colors.black,
+            )),
         backgroundColor: Colors.transparent,
         elevation: 0,
         actions: const [
@@ -45,7 +52,7 @@ class _DealerScreen2State extends State<DealerScreen2> {
             const Padding(
               padding: EdgeInsets.only(left: 25.0, top: 5),
               child: Text(
-                'A person you can deliver vegetable',
+                'A person you can deliver milk',
                 style: TextStyle(color: Color(0xFF20BCDE), fontSize: 13),
               ),
             ),
@@ -57,12 +64,14 @@ class _DealerScreen2State extends State<DealerScreen2> {
               height: 35,
               child: TextField(
                 decoration: InputDecoration(
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(22.0), borderSide: BorderSide.none),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(22.0),
+                      borderSide: BorderSide.none),
                   fillColor: Colors.white,
                   filled: true,
                   contentPadding: const EdgeInsets.only(top: 5, left: 35),
                   hintText: 'Enter the Phone No.',
-                  hintStyle:  TextStyle(color: Colors.grey[700]),
+                  hintStyle: TextStyle(color: Colors.grey[700]),
                 ),
               ),
             ),
@@ -75,12 +84,14 @@ class _DealerScreen2State extends State<DealerScreen2> {
               child: TextField(
                 obscureText: true,
                 decoration: InputDecoration(
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(22.0), borderSide: BorderSide.none),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(22.0),
+                      borderSide: BorderSide.none),
                   fillColor: Colors.white,
                   filled: true,
                   contentPadding: const EdgeInsets.only(top: 5, left: 35),
                   hintText: 'Enter the Password',
-                  hintStyle:  TextStyle(color: Colors.grey[700]),
+                  hintStyle: TextStyle(color: Colors.grey[700]),
                 ),
               ),
             ),
@@ -88,7 +99,7 @@ class _DealerScreen2State extends State<DealerScreen2> {
               height: 50,
             ),
             GestureDetector(
-              onTap: (){
+              onTap: () {
                 //Navigator.push(context, MaterialPageRoute(builder: (context)=> const MyHomePage(title: 'Dashboard')));
               },
               child: Center(
@@ -97,20 +108,27 @@ class _DealerScreen2State extends State<DealerScreen2> {
                   height: 50,
                   decoration: BoxDecoration(
                       color: const Color(0xFF20BCDE),
-                      borderRadius: BorderRadius.circular(10)
-                  ),
-                  child: Center(child: Row(
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Center(
+                      child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: const [
-                      Text('Search',style: TextStyle(color: Colors.white,fontSize: 28),),
-
-                      Icon(Icons.search,color: Colors.white,)
+                      Text(
+                        'Search',
+                        style: TextStyle(color: Colors.white, fontSize: 28),
+                      ),
+                      Icon(
+                        Icons.search,
+                        color: Colors.white,
+                      )
                     ],
                   )),
                 ),
               ),
             ),
-            const SizedBox(height: 5,),
+            const SizedBox(
+              height: 5,
+            ),
             Center(
               child: Padding(
                 padding: const EdgeInsets.all(22.0),
@@ -125,7 +143,8 @@ class _DealerScreen2State extends State<DealerScreen2> {
                         color: Colors.grey.withOpacity(0.3),
                         spreadRadius: 3,
                         blurRadius: 8,
-                        offset: const Offset(5, 5), // changes position of shadow
+                        offset:
+                            const Offset(5, 5), // changes position of shadow
                       ),
                     ],
                   ),
@@ -137,28 +156,32 @@ class _DealerScreen2State extends State<DealerScreen2> {
                         padding: const EdgeInsets.only(left: 15.0, top: 25.0),
                         child: Text(
                           'Name: Avinash Kadu',
-                          style: TextStyle(color: Colors.grey[600], fontSize: 17),
+                          style:
+                              TextStyle(color: Colors.grey[600], fontSize: 17),
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 15.0, top: 25.0),
                         child: Text(
                           'Phone No: 1234-567-890',
-                          style: TextStyle(color: Colors.grey[600], fontSize: 17),
+                          style:
+                              TextStyle(color: Colors.grey[600], fontSize: 17),
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 15.0, top: 25.0),
                         child: Text(
                           'Location: Raigad, Maharashtra',
-                          style: TextStyle(color: Colors.grey[600], fontSize: 16),
+                          style:
+                              TextStyle(color: Colors.grey[600], fontSize: 16),
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 15.0, top: 25.0),
                         child: Text(
                           'Farmer: New Sanghvi',
-                          style: TextStyle(color: Colors.grey[600], fontSize: 17),
+                          style:
+                              TextStyle(color: Colors.grey[600], fontSize: 17),
                         ),
                       ),
                       const SizedBox(
@@ -178,7 +201,8 @@ class _DealerScreen2State extends State<DealerScreen2> {
                                   color: Colors.black.withOpacity(0.2),
                                   spreadRadius: 1,
                                   blurRadius: 2,
-                                  offset: const Offset(2, 3), // changes position of shadow
+                                  offset: const Offset(
+                                      2, 3), // changes position of shadow
                                 ),
                               ],
                             ),
@@ -198,23 +222,24 @@ class _DealerScreen2State extends State<DealerScreen2> {
                                   color: Colors.black.withOpacity(0.2),
                                   spreadRadius: 1,
                                   blurRadius: 2,
-                                  offset: const Offset(2, 3), // changes position of shadow
+                                  offset: const Offset(
+                                      2, 3), // changes position of shadow
                                 ),
                               ],
                             ),
-                            child:  Center(
+                            child: Center(
                                 child: GestureDetector(
-                                  onTap: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => Confirmation()));
-                                  },
-                                  child: Text(
-                                    'Connect',
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                )),
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Confirmation()));
+                              },
+                              child: Text(
+                                'Connect',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            )),
                           )
                         ],
                       )

@@ -164,7 +164,7 @@ class _StatisticsState extends State<Statistics> {
             padding: EdgeInsets.only(top: 25.0),
             child: Center(
               child: Text(
-                'Vegetable collected by each Farmer',
+                'milk collected by each Farmer',
                 style: TextStyle(
                     color: Colors.black,
                     fontSize: 15,

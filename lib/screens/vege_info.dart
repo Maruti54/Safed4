@@ -10,7 +10,16 @@ class VegeInfoScreen extends StatefulWidget {
 }
 
 class _VegeInfoScreenState extends State<VegeInfoScreen> {
-  final List<String> _vegetables = ['Carrots', 'Potato', 'Tomato', 'Onions', 'Broccoli', 'Mushroom', 'Lettuce', 'Capsicum'];
+  final List<String> _milks = [
+    'Carrots',
+    'Potato',
+    'Tomato',
+    'Onions',
+    'Broccoli',
+    'Mushroom',
+    'Lettuce',
+    'Capsicum'
+  ];
   var SelectedItem;
   @override
   Widget build(BuildContext context) {
@@ -40,14 +49,17 @@ class _VegeInfoScreenState extends State<VegeInfoScreen> {
         ],
       ),
       body: SingleChildScrollView(
-        child: Column( 
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Padding(
               padding: EdgeInsets.all(15.0),
-              child:  Text(
-                'Vegetable Information',
-                style: TextStyle(color: Colors.black, fontWeight: FontWeight.w500, fontSize: 30),
+              child: Text(
+                'milk Information',
+                style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 30),
               ),
             ),
             const SizedBox(
@@ -73,29 +85,29 @@ class _VegeInfoScreenState extends State<VegeInfoScreen> {
                 ),
                 child: DropdownButton(
                   value: SelectedItem,
-                  items: _vegetables
-                      .map((vegetable) => DropdownMenuItem(
-                            value: vegetable,
+                  items: _milks
+                      .map((milk) => DropdownMenuItem(
+                            value: milk,
                             child: Padding(
                               padding: const EdgeInsets.only(left: 20),
-                              child: Text(vegetable),
+                              child: Text(milk),
                             ),
                           ))
                       .toList(),
-                  onChanged: (vegetable) {
+                  onChanged: (milk) {
                     setState(() {
-                      SelectedItem = vegetable;
+                      SelectedItem = milk;
                     });
                   },
                   icon: Padding(
                     padding: const EdgeInsets.only(right: 8.0),
-                    child: Icon(Icons.keyboard_arrow_down,size: 30,color: Colors.grey[600]),
+                    child: Icon(Icons.keyboard_arrow_down,
+                        size: 30, color: Colors.grey[600]),
                   ),
                   isExpanded: true,
                   hint: const Padding(
                     padding: const EdgeInsets.only(left: 20.0),
-                    child: Text('Select vegetable'),
-
+                    child: Text('Select milk'),
                   ),
                   underline: const SizedBox(),
                 ),
@@ -110,21 +122,26 @@ class _VegeInfoScreenState extends State<VegeInfoScreen> {
                 Container(
                   height: 100,
                   width: 90,
-                  decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(22.0)),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(22.0)),
                   child: Column(
                     children: [
-                       Padding(
+                      Padding(
                         padding: EdgeInsets.all(8.0),
-                        child:  Text(
+                        child: Text(
                           'Quantity',
-                          style:  TextStyle(fontSize: 15,color: Colors.grey[600]),
+                          style:
+                              TextStyle(fontSize: 15, color: Colors.grey[600]),
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 15.0, right: 15.0),
                         child: TextField(
                           textAlign: TextAlign.center,
-                          inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                          inputFormatters: [
+                            FilteringTextInputFormatter.digitsOnly
+                          ],
                         ),
                       ),
                     ],
@@ -133,21 +150,26 @@ class _VegeInfoScreenState extends State<VegeInfoScreen> {
                 Container(
                   height: 100,
                   width: 90,
-                  decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(22.0)),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(22.0)),
                   child: Column(
                     children: [
-                       Padding(
+                      Padding(
                         padding: EdgeInsets.all(8.0),
-                        child:  Text(
+                        child: Text(
                           'Freshness',
-                          style: TextStyle(fontSize: 15,color: Colors.grey[600]),
+                          style:
+                              TextStyle(fontSize: 15, color: Colors.grey[600]),
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 15.0, right: 15.0),
                         child: TextField(
                           textAlign: TextAlign.center,
-                          inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                          inputFormatters: [
+                            FilteringTextInputFormatter.digitsOnly
+                          ],
                         ),
                       ),
                     ],
@@ -156,21 +178,26 @@ class _VegeInfoScreenState extends State<VegeInfoScreen> {
                 Container(
                   height: 100,
                   width: 90,
-                  decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(22.0)),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(22.0)),
                   child: Column(
                     children: [
-                       Padding(
+                      Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child:  Text(
+                        child: Text(
                           'Ripeness',
-                          style: TextStyle(fontSize: 15,color: Colors.grey[600]),
+                          style:
+                              TextStyle(fontSize: 15, color: Colors.grey[600]),
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 15.0, right: 15.0),
                         child: TextField(
                           textAlign: TextAlign.center,
-                          inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                          inputFormatters: [
+                            FilteringTextInputFormatter.digitsOnly
+                          ],
                         ),
                       ),
                     ],
@@ -178,15 +205,27 @@ class _VegeInfoScreenState extends State<VegeInfoScreen> {
                 ),
               ],
             ),
-            SizedBox(height: 75,),
-            Center(
-              child: Text('Rate Per Kg 40 \u{20B9}',style: TextStyle(fontSize: 20,color: Colors.grey[600]),),
+            SizedBox(
+              height: 75,
             ),
-            SizedBox(height: 15,),
             Center(
-              child: Text('Amount 120\u{20B9}',style: TextStyle(fontSize: 40,color: Colors.grey[600]),),
+              child: Text(
+                'Rate Per Kg 40 \u{20B9}',
+                style: TextStyle(fontSize: 20, color: Colors.grey[600]),
+              ),
             ),
-            SizedBox(height: 45,),
+            SizedBox(
+              height: 15,
+            ),
+            Center(
+              child: Text(
+                'Amount 120\u{20B9}',
+                style: TextStyle(fontSize: 40, color: Colors.grey[600]),
+              ),
+            ),
+            SizedBox(
+              height: 45,
+            ),
             Center(
               child: GestureDetector(
                 onTap: () {},
@@ -194,13 +233,14 @@ class _VegeInfoScreenState extends State<VegeInfoScreen> {
                   child: Container(
                     width: 170,
                     height: 50,
-                    decoration: BoxDecoration(color: const Color(0xFF20BCDE), borderRadius: BorderRadius.circular(10)),
+                    decoration: BoxDecoration(
+                        color: const Color(0xFF20BCDE),
+                        borderRadius: BorderRadius.circular(10)),
                     child: const Center(
                         child: Text(
-                          'Confirm',
-                          style: TextStyle(color: Colors.white, fontSize: 28),
-                        )),
-
+                      'Confirm',
+                      style: TextStyle(color: Colors.white, fontSize: 28),
+                    )),
                   ),
                 ),
               ),

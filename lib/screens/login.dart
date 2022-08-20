@@ -1,7 +1,6 @@
-// Login Screen
-
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:safed/farmer_registration/f_registration5.dart';
 import 'package:safed/screens/best_proceessor.dart';
 import 'package:safed/screens/collector_dashboard.dart';
 import 'package:safed/screens/producer_dashboard.dart';
@@ -16,6 +15,28 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   var _value;
+
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
+
+  Future logIn() async {
+    showDialog(
+      context: context,
+      builder: (context) => Center(
+        child: CircularProgressIndicator(),
+      ),
+    );
+
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: email.text.trim(),
+        password: password.text.trim(),
+      );
+    } catch (e) {
+      print(e);
+    }
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,6 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
               padding: const EdgeInsets.only(left: 25, right: 25),
               height: 35,
               child: TextField(
+                controller: email,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(22.0),
@@ -59,7 +81,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   fillColor: Colors.white,
                   filled: true,
                   contentPadding: const EdgeInsets.only(top: 5, left: 35),
-                  hintText: 'Enter the Phone No.',
+                  hintText: 'Enter the Email',
                   hintStyle: TextStyle(color: Colors.grey[700]),
                 ),
               ),
@@ -71,6 +93,7 @@ class _LoginScreenState extends State<LoginScreen> {
               padding: const EdgeInsets.only(left: 25, right: 25),
               height: 35,
               child: TextField(
+                controller: password,
                 obscureText: true,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
@@ -234,7 +257,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       borderRadius: BorderRadius.circular(10)),
                   child: Center(
                       child: GestureDetector(
-                    onTap: () {
+                    onTap: () async {
+                      await logIn();
                       if (_value == 0) {
                         Navigator.push(
                             context,

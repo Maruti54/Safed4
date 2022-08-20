@@ -1,9 +1,15 @@
+import 'dart:ffi';
+
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:flutter/material.dart';
 
 import 'f_registration2.dart';
+
+List cattleList = [];
 
 class FRegistrationScreen1 extends StatefulWidget {
   const FRegistrationScreen1({Key? key}) : super(key: key);
@@ -14,6 +20,20 @@ class FRegistrationScreen1 extends StatefulWidget {
 
 class _FRegistrationScreen1State extends State<FRegistrationScreen1> {
   int _count1 = 1;
+
+  final user = FirebaseAuth.instance.currentUser!;
+
+  Future addFarmerInfo() async {
+    print('CATTLELIST: $cattleList, ${user.email}');
+    final docUser =
+        FirebaseFirestore.instance.collection('farmers').doc(user.email);
+    final json = {
+      'no-of-cattles': _count1,
+      'cattle-list': FieldValue.arrayUnion(cattleList),
+    };
+
+    await docUser.set(json, SetOptions(merge: true));
+  }
 
   final controller = CarouselController();
   void increment1() {
@@ -74,10 +94,10 @@ class _FRegistrationScreen1State extends State<FRegistrationScreen1> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Padding(
+            Padding(
               padding: EdgeInsets.all(20.0),
               child: Text(
-                'Hello,Siddhant !',
+                'Hello,${user.displayName}!',
                 style: TextStyle(
                     color: Colors.black,
                     fontSize: 40,
@@ -209,33 +229,30 @@ class _FRegistrationScreen1State extends State<FRegistrationScreen1> {
               height: 25,
             ),
             Center(
-              child: GestureDetector(
-                onTap: () {},
-                child: Container(
-                  height: 45,
-                  width: 170,
-                  decoration: BoxDecoration(
-                      color: Color(0xFF20BCDE),
-                      borderRadius: BorderRadius.circular(10.0)),
-                  child: Center(
-                    child: GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => DealerScreen()));
-                        },
-                        child: Text(
-                          'Save',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 22,
-                              letterSpacing: 3),
-                        )),
+              child: Container(
+                height: 45,
+                width: 170,
+                decoration: BoxDecoration(
+                    color: Color(0xFF20BCDE),
+                    borderRadius: BorderRadius.circular(10.0)),
+                child: Center(
+                  child: GestureDetector(
+                    onTap: () async {
+                      await addFarmerInfo();
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => DealerScreen()));
+                    },
+                    child: Text(
+                      'Done',
+                      style: TextStyle(
+                          color: Colors.white, fontSize: 22, letterSpacing: 3),
+                    ),
                   ),
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),
@@ -258,21 +275,24 @@ class MilkCard extends StatefulWidget {
 }
 
 class _MilkCardState extends State<MilkCard> {
-  List<String> _Milks = [
-    'Carrots',
-    'Potato',
-    'Tomato',
-    'Onions',
-    'Broccoli',
-    'Mushroom',
-    'Lettuce',
-    'Capsicum'
+  TextEditingController avgp = TextEditingController();
+  TextEditingController nickname = TextEditingController();
+
+  final List<String> _Milks = [
+    'Breed 1',
+    'Breed 2',
+    'Breed 3',
+    'Breed 4',
+    'Breed 5',
+    'Breed 6',
+    'Breed 7',
+    'Breed 8'
   ];
   var SelectedItem;
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(22.0),
+      padding: const EdgeInsets.all(14.0),
       child: Container(
         height: 300,
         width: 270,
@@ -290,9 +310,6 @@ class _MilkCardState extends State<MilkCard> {
         ),
         child: Column(
           children: [
-            SizedBox(
-              height: 15,
-            ),
             Center(
               child: Padding(
                 padding: const EdgeInsets.only(top: 22.0),
@@ -326,15 +343,12 @@ class _MilkCardState extends State<MilkCard> {
                     isExpanded: true,
                     hint: const Padding(
                       padding: const EdgeInsets.only(left: 20.0),
-                      child: Text('Select Milk'),
+                      child: Text('Select Breed'),
                     ),
                     underline: const SizedBox(),
                   ),
                 ),
               ),
-            ),
-            SizedBox(
-              height: 15,
             ),
             Padding(
               padding: const EdgeInsets.all(15.0),
@@ -342,6 +356,7 @@ class _MilkCardState extends State<MilkCard> {
                 height: 35,
                 width: 400,
                 child: TextField(
+                  controller: avgp,
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.grey[350],
@@ -349,7 +364,7 @@ class _MilkCardState extends State<MilkCard> {
                       borderRadius: BorderRadius.circular(22.0),
                       borderSide: BorderSide.none,
                     ),
-                    hintText: 'Daily Avg. Production',
+                    hintText: 'Daily Production in ltr',
                     contentPadding: EdgeInsets.only(top: 1.0),
                   ),
                   cursorHeight: 20,
@@ -363,6 +378,7 @@ class _MilkCardState extends State<MilkCard> {
                 height: 35,
                 width: 400,
                 child: TextField(
+                  controller: nickname,
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.grey[350],
@@ -375,6 +391,29 @@ class _MilkCardState extends State<MilkCard> {
                   ),
                   cursorHeight: 20,
                   textAlign: TextAlign.center,
+                ),
+              ),
+            ),
+            Center(
+              child: Container(
+                height: 45,
+                width: 100,
+                decoration: BoxDecoration(
+                    color: Color(0xFF20BCDE),
+                    borderRadius: BorderRadius.circular(100.0)),
+                child: Center(
+                  child: GestureDetector(
+                    onTap: () {
+                      String newString =
+                          "Breed: $SelectedItem Avg prod: ${avgp.text.trim()} Nickname: ${nickname.text.trim()}";
+                      cattleList.add(newString);
+                    },
+                    child: Text(
+                      'Save',
+                      style: TextStyle(
+                          color: Colors.white, fontSize: 22, letterSpacing: 3),
+                    ),
+                  ),
                 ),
               ),
             ),
