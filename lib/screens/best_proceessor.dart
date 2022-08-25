@@ -82,15 +82,20 @@ class _BestProcessorScreenState extends State<BestProcessorScreen> {
                         color: Colors.black.withOpacity(0.2),
                         spreadRadius: 1,
                         blurRadius: 2,
-                        offset: const Offset(2, 3), // changes position of shadow
+                        offset:
+                            const Offset(2, 3), // changes position of shadow
                       ),
                     ],
                   ),
-                  child: Center(child: GestureDetector(
-                      onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>TimelineScreen()));
-                      },
-                      child: Text('Info'))),
+                  child: Center(
+                      child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => TimelineScreen()));
+                          },
+                          child: Text('Info'))),
                 ),
                 const SizedBox(
                   width: 25,
@@ -106,23 +111,24 @@ class _BestProcessorScreenState extends State<BestProcessorScreen> {
                         color: Colors.black.withOpacity(0.2),
                         spreadRadius: 1,
                         blurRadius: 2,
-                        offset: const Offset(2, 3), // changes position of shadow
+                        offset:
+                            const Offset(2, 3), // changes position of shadow
                       ),
                     ],
                   ),
                   child: Center(
                       child: GestureDetector(
-                        onTap: (){
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ProducerInfo()));
-                        },
-                        child: Text(
-                          'Connect',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      )),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ProducerInfo()));
+                    },
+                    child: Text(
+                      'Connect',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  )),
                 )
               ],
             )
@@ -131,6 +137,7 @@ class _BestProcessorScreenState extends State<BestProcessorScreen> {
       ),
     );
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -150,13 +157,16 @@ class _BestProcessorScreenState extends State<BestProcessorScreen> {
                 Row(
                   children: [
                     const Padding(
-                      padding:  EdgeInsets.only(top: 20.0, left: 15),
+                      padding: EdgeInsets.only(top: 20.0, left: 15),
                       child: SizedBox(
                         width: 140,
                         child: Text(
                           'Hello,'
-                              'Pavan',
-                          style: TextStyle(fontSize: 45, color: Colors.black, fontWeight: FontWeight.w500),
+                          'Pavan',
+                          style: TextStyle(
+                              fontSize: 45,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w500),
                         ),
                       ),
                     ),
@@ -178,14 +188,17 @@ class _BestProcessorScreenState extends State<BestProcessorScreen> {
                   ],
                 ),
                 const Padding(
-                  padding:  EdgeInsets.only(top: 5.0, left: 15),
+                  padding: EdgeInsets.only(top: 5.0, left: 15),
                   child: Text(
                     '+91 1234-5678-90',
-                    style: TextStyle(fontSize: 15, color: Colors.white, fontWeight: FontWeight.w500),
+                    style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w500),
                   ),
                 ),
                 Padding(
-                  padding:  const EdgeInsets.all(15.0),
+                  padding: const EdgeInsets.all(15.0),
                   child: ElevatedButton(
                     onPressed: () {},
                     style: ButtonStyle(
@@ -203,7 +216,7 @@ class _BestProcessorScreenState extends State<BestProcessorScreen> {
             ),
             const ListTile(
               title: Padding(
-                padding:  EdgeInsets.only(left: 30.0),
+                padding: EdgeInsets.only(left: 30.0),
                 child: Text(
                   'My Profile',
                   style: TextStyle(color: Colors.white, fontSize: 25),
@@ -212,7 +225,7 @@ class _BestProcessorScreenState extends State<BestProcessorScreen> {
             ),
             const ListTile(
               title: Padding(
-                padding:  EdgeInsets.only(left: 30.0),
+                padding: EdgeInsets.only(left: 30.0),
                 child: Text(
                   'Current/Pending Contract',
                   style: TextStyle(color: Colors.white, fontSize: 25),
@@ -221,17 +234,17 @@ class _BestProcessorScreenState extends State<BestProcessorScreen> {
             ),
             const ListTile(
               title: Padding(
-                padding:  EdgeInsets.only(left: 30.0),
+                padding: EdgeInsets.only(left: 30.0),
                 child: Text(
                   'Explore New       '
-                      'Dealer',
+                  'Dealer',
                   style: TextStyle(color: Colors.white, fontSize: 25),
                 ),
               ),
             ),
             const ListTile(
               title: Padding(
-                padding:  EdgeInsets.only(left: 30.0),
+                padding: EdgeInsets.only(left: 30.0),
                 child: Text(
                   'List of Farmer',
                   style: TextStyle(color: Colors.white, fontSize: 25),
@@ -247,60 +260,62 @@ class _BestProcessorScreenState extends State<BestProcessorScreen> {
           const Padding(
             padding: EdgeInsets.all(30.0),
             child: Text(
-              'Best Collector',
-              style: TextStyle(color: Colors.black, fontSize: 35, fontWeight: FontWeight.w500),
+              'Best Exporter',
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 35,
+                  fontWeight: FontWeight.w500),
             ),
           ),
           const SizedBox(
             height: 50,
           ),
-          Stack(
-              children: [
-                Center(
-                    child: CarouselSlider.builder(
-                      carouselController: controller,
-                      options: CarouselOptions(height: 320),
-                      itemCount: 6,
-                      itemBuilder: (context, index, realIndex) {
-                        return BestFarmerCard();
-                      },
-                    )),
-                Positioned(
-                    top: 130,
-                    left: 25,
-                    child: GestureDetector(
-                      onTap: (){
-                        controller.previousPage(duration: Duration(seconds: 1));
-                        setState(() {
-
-                        });
-                      },
-                      child: Container(
-                        height: 30,
-                        width: 30,
-                        decoration: BoxDecoration(color: Colors.grey[400], borderRadius: BorderRadius.circular(50)),
-                        child: Icon(Icons.arrow_back_ios_new),
-                      ),
-                    )),
-                Positioned(
-                  right: 25,
-                  top: 130,
-                  child: InkWell(
-                    onTap: (){
-                      controller.nextPage(duration: Duration(seconds: 1));
-                      setState(() {
-
-                      });
-                    },
-                    child: Container(
-                      height: 30,
-                      width: 30,
-                      decoration: BoxDecoration(color: Colors.grey[400], borderRadius: BorderRadius.circular(50)),
-                      child: Icon(Icons.arrow_forward_ios),
-                    ),
+          Stack(children: [
+            Center(
+                child: CarouselSlider.builder(
+              carouselController: controller,
+              options: CarouselOptions(height: 320),
+              itemCount: 6,
+              itemBuilder: (context, index, realIndex) {
+                return BestFarmerCard();
+              },
+            )),
+            Positioned(
+                top: 130,
+                left: 25,
+                child: GestureDetector(
+                  onTap: () {
+                    controller.previousPage(duration: Duration(seconds: 1));
+                    setState(() {});
+                  },
+                  child: Container(
+                    height: 30,
+                    width: 30,
+                    decoration: BoxDecoration(
+                        color: Colors.grey[400],
+                        borderRadius: BorderRadius.circular(50)),
+                    child: Icon(Icons.arrow_back_ios_new),
                   ),
+                )),
+            Positioned(
+              right: 25,
+              top: 130,
+              child: InkWell(
+                onTap: () {
+                  controller.nextPage(duration: Duration(seconds: 1));
+                  setState(() {});
+                },
+                child: Container(
+                  height: 30,
+                  width: 30,
+                  decoration: BoxDecoration(
+                      color: Colors.grey[400],
+                      borderRadius: BorderRadius.circular(50)),
+                  child: Icon(Icons.arrow_forward_ios),
                 ),
-              ]),
+              ),
+            ),
+          ]),
         ],
       ),
     );
@@ -400,9 +415,9 @@ Widget BestFarmerCard() {
                 ),
                 child: const Center(
                     child: Text(
-                      'Connect',
-                      style: TextStyle(color: Colors.white),
-                    )),
+                  'Connect',
+                  style: TextStyle(color: Colors.white),
+                )),
               )
             ],
           )

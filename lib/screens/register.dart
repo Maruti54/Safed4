@@ -42,19 +42,55 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     }
   }
 
-  Future createUser() async {
-    try{final docUser =
-        FirebaseFirestore.instance.collection('farmers').doc(email.text.trim());
-    final json = {
-      'email': email.text.trim(),
-      'name': name.text.trim(),
-      'location': locationc.text.trim(),
-    };
+  Future createFarmerUser() async {
+    try {
+      final docUser = FirebaseFirestore.instance
+          .collection('farmers')
+          .doc(email.text.trim());
+      final json = {
+        'email': email.text.trim(),
+        'name': name.text.trim(),
+        'location': locationc.text.trim(),
+      };
 
-    await docUser.set(json);}
-        catch(e){
+      await docUser.set(json);
+    } catch (e) {
       print(e);
-        }
+    }
+  }
+
+  Future createImporterUser() async {
+    try {
+      final docUser = FirebaseFirestore.instance
+          .collection('importers')
+          .doc(email.text.trim());
+      final json = {
+        'email': email.text.trim(),
+        'name': name.text.trim(),
+        'location': locationc.text.trim(),
+      };
+
+      await docUser.set(json);
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future createExporterUser() async {
+    try {
+      final docUser = FirebaseFirestore.instance
+          .collection('exporters')
+          .doc(email.text.trim());
+      final json = {
+        'email': email.text.trim(),
+        'name': name.text.trim(),
+        'location': locationc.text.trim(),
+      };
+
+      await docUser.set(json);
+    } catch (e) {
+      print(e);
+    }
   }
 
   Future<Position> _getGeoLocationPosition() async {
@@ -445,20 +481,20 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             GestureDetector(
               onTap: () async {
                 await signUp();
-                await createUser();
                 if (_value == 0) {
+                  await createFarmerUser();
                   Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) => FRegistrationScreen1()));
-                }
-                else if (_value == 1) {
+                } else if (_value == 1) {
+                  await createExporterUser();
                   Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) => ExporterRegistration()));
-                }
-                else if (_value == 2) {
+                } else if (_value == 2) {
+                  await createImporterUser();
                   Navigator.push(
                       context,
                       MaterialPageRoute(

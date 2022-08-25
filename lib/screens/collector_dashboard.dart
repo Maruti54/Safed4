@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:safed/screens/producer_dashboard.dart';
 import 'package:tab_container/tab_container.dart';
 import 'package:safed/screens/qr_code_scanner.dart';
 import 'package:safed/screens/history.dart';
@@ -7,14 +8,14 @@ import 'package:safed/screens/statistics_screen.dart';
 
 import 'notification.dart';
 
-class CollectorDashboard extends StatefulWidget {
-  const CollectorDashboard({Key? key}) : super(key: key);
+class ExporterDashboard extends StatefulWidget {
+  const ExporterDashboard({Key? key}) : super(key: key);
 
   @override
-  State<CollectorDashboard> createState() => _CollectorDashboardState();
+  State<ExporterDashboard> createState() => _ExporterDashboardState();
 }
 
-class _CollectorDashboardState extends State<CollectorDashboard> {
+class _ExporterDashboardState extends State<ExporterDashboard> {
   late final TabContainerController _controller;
   late TextTheme textTheme;
 
@@ -49,13 +50,16 @@ class _CollectorDashboardState extends State<CollectorDashboard> {
                 Row(
                   children: [
                     const Padding(
-                      padding:  EdgeInsets.only(top: 20.0, left: 15),
+                      padding: EdgeInsets.only(top: 20.0, left: 15),
                       child: SizedBox(
                         width: 140,
                         child: Text(
                           'Hello,'
-                              'Pavan',
-                          style: TextStyle(fontSize: 45, color: Colors.black, fontWeight: FontWeight.w500),
+                          'Pavan',
+                          style: TextStyle(
+                              fontSize: 45,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w500),
                         ),
                       ),
                     ),
@@ -77,14 +81,17 @@ class _CollectorDashboardState extends State<CollectorDashboard> {
                   ],
                 ),
                 const Padding(
-                  padding:  EdgeInsets.only(top: 5.0, left: 15),
+                  padding: EdgeInsets.only(top: 5.0, left: 15),
                   child: Text(
                     '+91 1234-5678-90',
-                    style: TextStyle(fontSize: 15, color: Colors.white, fontWeight: FontWeight.w500),
+                    style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w500),
                   ),
                 ),
                 Padding(
-                  padding:  const EdgeInsets.all(15.0),
+                  padding: const EdgeInsets.all(15.0),
                   child: ElevatedButton(
                     onPressed: () {},
                     style: ButtonStyle(
@@ -102,7 +109,7 @@ class _CollectorDashboardState extends State<CollectorDashboard> {
             ),
             const ListTile(
               title: Padding(
-                padding:  EdgeInsets.only(left: 30.0),
+                padding: EdgeInsets.only(left: 30.0),
                 child: Text(
                   'My Profile',
                   style: TextStyle(color: Colors.white, fontSize: 25),
@@ -111,7 +118,7 @@ class _CollectorDashboardState extends State<CollectorDashboard> {
             ),
             const ListTile(
               title: Padding(
-                padding:  EdgeInsets.only(left: 30.0),
+                padding: EdgeInsets.only(left: 30.0),
                 child: Text(
                   'Current/Pending Contract',
                   style: TextStyle(color: Colors.white, fontSize: 25),
@@ -120,20 +127,28 @@ class _CollectorDashboardState extends State<CollectorDashboard> {
             ),
             const ListTile(
               title: Padding(
-                padding:  EdgeInsets.only(left: 30.0),
+                padding: EdgeInsets.only(left: 30.0),
                 child: Text(
                   'Explore New       '
-                      'Dealer',
+                  'Dealer',
                   style: TextStyle(color: Colors.white, fontSize: 25),
                 ),
               ),
             ),
-            const ListTile(
+            ListTile(
               title: Padding(
-                padding:  EdgeInsets.only(left: 30.0),
-                child: Text(
-                  'List of Farmer',
-                  style: TextStyle(color: Colors.white, fontSize: 25),
+                padding: EdgeInsets.only(left: 30.0),
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ProducerDashboard()));
+                  },
+                  child: Text(
+                    'List of Farmer',
+                    style: TextStyle(color: Colors.white, fontSize: 25),
+                  ),
                 ),
               ),
             ),
@@ -142,15 +157,21 @@ class _CollectorDashboardState extends State<CollectorDashboard> {
       ),
       backgroundColor: const Color(0xFFEEEEEE),
       appBar: AppBar(
-          iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: IconThemeData(color: Colors.black),
         actions: [
-          IconButton(onPressed: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const NotificationScreen()));
-          }, icon: Icon(Icons.doorbell_outlined,color: Colors.black))
+          IconButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const NotificationScreen()));
+              },
+              icon: Icon(Icons.doorbell_outlined, color: Colors.black))
         ],
-        title: const Text('Dasboard',style: TextStyle(color: Colors.black),),
+        title: const Text(
+          'Dasboard',
+          style: TextStyle(color: Colors.black),
+        ),
         backgroundColor: const Color(0xFFEEEEEE),
       ),
       body: SingleChildScrollView(
@@ -197,9 +218,9 @@ class _CollectorDashboardState extends State<CollectorDashboard> {
                     Colors.white,
                   ],
                   selectedTextStyle:
-                  textTheme.bodyText2?.copyWith(fontSize: 15.0),
+                      textTheme.bodyText2?.copyWith(fontSize: 15.0),
                   unselectedTextStyle:
-                  textTheme.bodyText2?.copyWith(fontSize: 13.0),
+                      textTheme.bodyText2?.copyWith(fontSize: 13.0),
                   tabs: const ['My QR Code', 'Scan', 'History', 'Graph'],
                   children: [
                     Center(

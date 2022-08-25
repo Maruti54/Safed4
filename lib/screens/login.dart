@@ -35,7 +35,6 @@ class _LoginScreenState extends State<LoginScreen> {
     } catch (e) {
       print(e);
     }
-
   }
 
   @override
@@ -262,15 +261,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     onTap: () async {
                       await logIn();
                       if (_value == 0) {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ProducerDashboard()));
                       } else if (_value == 1) {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => CollectorDashboard()));
+                                builder: (context) => ExporterDashboard()));
                       } else {
                         Navigator.push(
                             context,

@@ -129,7 +129,7 @@ class _ProducerDashboardState extends State<ProducerDashboard> {
                 padding: EdgeInsets.only(left: 30.0),
                 child: Text(
                   'Explore New       '
-                  'Collector',
+                  'Exporter',
                   style: TextStyle(color: Colors.white, fontSize: 25),
                 ),
               ),
@@ -154,7 +154,8 @@ class _ProducerDashboardState extends State<ProducerDashboard> {
               onPressed: () {
                 Navigator.push(
                     context,
-                MaterialPageRoute(builder: (context) => const NotificationScreen()));
+                    MaterialPageRoute(
+                        builder: (context) => const NotificationScreen()));
               },
               icon: const Icon(
                 Icons.doorbell_outlined,
