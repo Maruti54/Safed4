@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:safed/screens/best_proceessor.dart';
 import 'package:safed/screens/collector_dashboard.dart';
+import 'package:safed/screens/importer_dashboard.dart';
 import 'package:safed/screens/producer_dashboard.dart';
 import 'package:safed/screens/register.dart';
 
@@ -270,7 +271,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => BestProcessorScreen()));
+                                builder: (context) => ImporterDashboard()));
                       }
                     },
                     child: Text(

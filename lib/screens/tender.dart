@@ -1,20 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:getwidget/components/list_tile/gf_list_tile.dart';
-import 'package:safed/screens/producer_info.dart';
-import 'Timeline.dart';
 
-class BestProcessorScreen extends StatefulWidget {
-  const BestProcessorScreen({Key? key}) : super(key: key);
+class Tender extends StatefulWidget {
+  const Tender({Key? key}) : super(key: key);
 
   @override
-  State<BestProcessorScreen> createState() => _BestProcessorScreenState();
+  State<Tender> createState() => _TenderState();
 }
 
-class _BestProcessorScreenState extends State<BestProcessorScreen> {
-  final controller = CarouselController();
-  int activeIndex = 0;
-
+class _TenderState extends State<Tender> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,24 +23,6 @@ class _BestProcessorScreenState extends State<BestProcessorScreen> {
                     'Maruti Patil',
                     style:
                     TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                  ),
-                  subTitle: Column(
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.only(top: 2.50),
-                        child: Text(
-                          'Phone No: 1234-567-890',
-                        ),
-                      ),
-                      Row(
-                        children: const [
-                          Icon(Icons.check,color: Colors.green,),
-                          Text(
-                            'Safed Assured',
-                          ),
-                        ],
-                      ),
-                    ],
                   ),
                   icon: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -137,10 +113,10 @@ class _BestProcessorScreenState extends State<BestProcessorScreen> {
                                                 child: Center(
                                                     child: GestureDetector(
                                                         onTap: () {
-                                                          Navigator.push(
-                                                              context,
-                                                              MaterialPageRoute(
-                                                                  builder: (context) => TimelineScreen()));
+                                                          // Navigator.push(
+                                                          //     context,
+                                                          //     MaterialPageRoute(
+                                                          //         builder: (context) => TimelineScreen()));
                                                         },
                                                         child: Text('Info'))),
                                               ),
@@ -166,10 +142,10 @@ class _BestProcessorScreenState extends State<BestProcessorScreen> {
                                                 child: Center(
                                                     child: GestureDetector(
                                                       onTap: () {
-                                                        Navigator.push(
-                                                            context,
-                                                            MaterialPageRoute(
-                                                                builder: (context) => ProducerInfo()));
+                                                        // Navigator.push(
+                                                        //     context,
+                                                        //     MaterialPageRoute(
+                                                        //         builder: (context) => ()));
                                                       },
                                                       child: Text(
                                                         'Connect',
