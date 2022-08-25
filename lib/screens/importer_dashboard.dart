@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:safed/screens/best_proceessor.dart';
+import 'package:safed/screens/importer_standards.dart';
+import 'package:safed/screens/tender.dart';
 
 class ImporterDashboard extends StatefulWidget {
   const ImporterDashboard({Key? key}) : super(key: key);
@@ -133,25 +135,12 @@ class _ImporterDashboardState extends State<ImporterDashboard> {
                       ],
 
                       backgroundColor: const Color(0xFF20BCDE),
-                      title: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          const Text(
-                            'Dashboard',
-                            textAlign: TextAlign.start,
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Text(
-                            '',
-                            textAlign: TextAlign.start,
-                            style: const TextStyle(
-                              fontSize: 15,
-                            ),
-                          ),
-                        ],
+                      title: const Text(
+                        'Dashboard',
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       bottom: const TabBar(
                         indicatorColor: Colors.white,
@@ -162,11 +151,18 @@ class _ImporterDashboardState extends State<ImporterDashboard> {
                         ],
                       ),
                     ),
-
+                    floatingActionButton: FloatingActionButton(onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ImporterStandards()));
+                    },
+                      child: Icon(Icons.add,color: Colors.white,),
+                    ),
                     body: TabBarView(
                         physics: const NeverScrollableScrollPhysics(),
                         children: [
-                          Container(),
+                          Tender(),
                           BestProcessorScreen(),
                         ])))));
   }
