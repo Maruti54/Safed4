@@ -4,6 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
+import 'package:safed/screens/exporter_registration.dart';
+import 'package:safed/screens/importer_registration.dart';
 
 import '../farmer_registration/f_registration1.dart';
 
@@ -22,7 +24,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
   TextEditingController locationc = TextEditingController();
-  final user = FirebaseAuth.instance.currentUser!;
 
   Future signUp() async {
     showDialog(
@@ -42,7 +43,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   }
 
   Future createUser() async {
-    final docUser =
+    try{final docUser =
         FirebaseFirestore.instance.collection('farmers').doc(email.text.trim());
     final json = {
       'email': email.text.trim(),
@@ -50,7 +51,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       'location': locationc.text.trim(),
     };
 
-    await docUser.set(json);
+    await docUser.set(json);}
+        catch(e){
+      print(e);
+        }
   }
 
   Future<Position> _getGeoLocationPosition() async {
@@ -104,7 +108,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       backgroundColor: const Color(0xFFEEEEEE),
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
           icon: const Icon(
             Icons.arrow_back,
             color: Colors.black,
@@ -445,6 +451,18 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       context,
                       MaterialPageRoute(
                           builder: (context) => FRegistrationScreen1()));
+                }
+                else if (_value == 1) {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ExporterRegistration()));
+                }
+                else if (_value == 2) {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ImporterRegistration()));
                 }
               },
               child: Center(

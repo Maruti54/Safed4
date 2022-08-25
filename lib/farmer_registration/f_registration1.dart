@@ -78,7 +78,9 @@ class _FRegistrationScreen1State extends State<FRegistrationScreen1> {
             Icons.arrow_back,
             color: Colors.black,
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
         actions: const [
           Padding(
@@ -98,7 +100,7 @@ class _FRegistrationScreen1State extends State<FRegistrationScreen1> {
               padding: EdgeInsets.all(20.0),
               child: Text(
                 'Hello,${user.displayName}!',
-                style: TextStyle(
+                style: const TextStyle(
                     color: Colors.black,
                     fontSize: 40,
                     fontWeight: FontWeight.w500),

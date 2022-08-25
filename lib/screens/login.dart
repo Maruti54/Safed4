@@ -22,7 +22,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Future logIn() async {
     showDialog(
       context: context,
-      builder: (context) => Center(
+      builder: (context) => const Center(
         child: CircularProgressIndicator(),
       ),
     );
@@ -44,7 +44,9 @@ class _LoginScreenState extends State<LoginScreen> {
       backgroundColor: const Color(0xFFEEEEEE),
       appBar: AppBar(
         leading: InkWell(
-            onTap: () {},
+            onTap: () {
+              Navigator.pop(context);
+            },
             child: const Icon(
               Icons.arrow_back,
               color: Colors.black,
