@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class ExporterRegistration extends StatefulWidget {
@@ -8,6 +10,24 @@ class ExporterRegistration extends StatefulWidget {
 }
 
 class _ExporterRegistrationState extends State<ExporterRegistration> {
+  TextEditingController iec = TextEditingController();
+  TextEditingController ise = TextEditingController();
+  TextEditingController apeda = TextEditingController();
+
+  final user = FirebaseAuth.instance.currentUser!;
+
+  Future addExporterInfo() async {
+    print("USER INFO: ${user.email}");
+    final docUser =
+        FirebaseFirestore.instance.collection('exporters').doc(user.email);
+    final json = {
+      'import export code': iec.text.trim(),
+      'ISE certificate code': ise.text.trim(),
+      'Apeda licence': apeda.text.trim(),
+    };
+    await docUser.set(json, SetOptions(merge: true));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,6 +68,7 @@ class _ExporterRegistrationState extends State<ExporterRegistration> {
                 elevation: 2.0,
                 borderRadius: BorderRadius.circular(22.0),
                 child: TextField(
+                  controller: iec,
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderSide: const BorderSide(
@@ -81,6 +102,7 @@ class _ExporterRegistrationState extends State<ExporterRegistration> {
                 elevation: 2.0,
                 borderRadius: BorderRadius.circular(22.0),
                 child: TextField(
+                  controller: ise,
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderSide: const BorderSide(
@@ -114,6 +136,7 @@ class _ExporterRegistrationState extends State<ExporterRegistration> {
                 elevation: 2.0,
                 borderRadius: BorderRadius.circular(22.0),
                 child: TextField(
+                  controller: apeda,
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderSide: const BorderSide(
@@ -148,14 +171,15 @@ class _ExporterRegistrationState extends State<ExporterRegistration> {
                     borderRadius: BorderRadius.circular(10)),
                 child: Center(
                   child: GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      addExporterInfo();
+                    },
                     child: const Text(
                       'Save',
                       style: TextStyle(color: Colors.white, fontSize: 28),
                     ),
                   ),
                 )),
-
           ],
         ),
       ),
