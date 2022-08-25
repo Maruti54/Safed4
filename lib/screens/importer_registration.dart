@@ -150,10 +150,10 @@ class _ImporterRegistrationState extends State<ImporterRegistration> {
                 child: Center(
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ImporterStandards()));
+                      // Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //         builder: (context) => ImporterStandards()));
                     },
                     child: const Text(
                       'Save',

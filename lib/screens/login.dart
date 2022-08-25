@@ -120,49 +120,49 @@ class _LoginScreenState extends State<LoginScreen> {
                     fontSize: 20,
                   )),
             ),
-            Container(
-              padding: const EdgeInsets.all(15),
-              margin:
-                  const EdgeInsets.only(top: 5, left: 25, right: 25, bottom: 5),
-              height: 75,
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey.shade400),
-                  borderRadius: BorderRadius.circular(8)),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    children: const [
-                      Text('Farmer',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
-                          )),
-                      Text('Milk Farmer',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 10,
-                          )),
-                    ],
-                  ),
-                  // SizedBox(
-                  //   width: MediaQuery.of(context).size.width * 0.42,
-                  // ),
-                  Radio(
-                    toggleable: true,
-                    value: 0,
-                    groupValue: _value,
-                    onChanged: (value) {
-                      setState(() {
-                        _value = value;
-                      });
-                    },
-                    fillColor: MaterialStateColor.resolveWith(
-                        (states) => const Color(0xFF20BCDE)),
-                  ),
-                ],
-              ),
-            ),
+            // Container(
+            //   padding: const EdgeInsets.all(15),
+            //   margin:
+            //       const EdgeInsets.only(top: 5, left: 25, right: 25, bottom: 5),
+            //   height: 75,
+            //   decoration: BoxDecoration(
+            //       border: Border.all(color: Colors.grey.shade400),
+            //       borderRadius: BorderRadius.circular(8)),
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //     children: [
+            //       Column(
+            //         children: const [
+            //           Text('Farmer',
+            //               style: TextStyle(
+            //                 color: Colors.black,
+            //                 fontSize: 20,
+            //               )),
+            //           Text('Milk Farmer',
+            //               style: TextStyle(
+            //                 color: Colors.black,
+            //                 fontSize: 10,
+            //               )),
+            //         ],
+            //       ),
+            //       // SizedBox(
+            //       //   width: MediaQuery.of(context).size.width * 0.42,
+            //       // ),
+            //       Radio(
+            //         toggleable: true,
+            //         value: 0,
+            //         groupValue: _value,
+            //         onChanged: (value) {
+            //           setState(() {
+            //             _value = value;
+            //           });
+            //         },
+            //         fillColor: MaterialStateColor.resolveWith(
+            //             (states) => const Color(0xFF20BCDE)),
+            //       ),
+            //     ],
+            //   ),
+            // ),
             Container(
               padding: const EdgeInsets.all(15),
               margin:

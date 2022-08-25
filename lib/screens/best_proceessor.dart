@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:safed/screens/producer_info.dart';
 
 import 'Timeline.dart';
+import 'importer_standards.dart';
 
 class BestProcessorScreen extends StatefulWidget {
   const BestProcessorScreen({Key? key}) : super(key: key);
@@ -84,7 +86,11 @@ class _BestProcessorScreenState extends State<BestProcessorScreen> {
                       ),
                     ],
                   ),
-                  child: const Center(child: Text('Info')),
+                  child: Center(child: GestureDetector(
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>TimelineScreen()));
+                      },
+                      child: Text('Info'))),
                 ),
                 const SizedBox(
                   width: 25,
@@ -107,7 +113,10 @@ class _BestProcessorScreenState extends State<BestProcessorScreen> {
                   child: Center(
                       child: GestureDetector(
                         onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>TimelineScreen()));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ProducerInfo()));
                         },
                         child: Text(
                           'Connect',
