@@ -76,7 +76,9 @@ class _ClusterMapScreenState extends State<ClusterMapScreen> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context);
+            },
             icon: Icon(
               Icons.arrow_back,
               size: 30,

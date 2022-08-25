@@ -27,7 +27,9 @@ class _VegeInfoScreenState extends State<VegeInfoScreen> {
       backgroundColor: const Color(0xFFEEEEEE),
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
           icon: const Icon(
             Icons.arrow_back,
             color: Colors.black,

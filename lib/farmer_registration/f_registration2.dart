@@ -19,7 +19,9 @@ class _DealerScreenState extends State<DealerScreen> {
       backgroundColor: const Color(0xFFEEEEEE),
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
           icon: const Icon(
             Icons.arrow_back,
             color: Colors.black,
