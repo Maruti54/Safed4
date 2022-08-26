@@ -42,23 +42,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     }
   }
 
-  Future createFarmerUser() async {
-    try {
-      final docUser = FirebaseFirestore.instance
-          .collection('farmers')
-          .doc(email.text.trim());
-      final json = {
-        'email': email.text.trim(),
-        'name': name.text.trim(),
-        'location': locationc.text.trim(),
-      };
-
-      await docUser.set(json);
-    } catch (e) {
-      print(e);
-    }
-  }
-
   Future createImporterUser() async {
     try {
       final docUser = FirebaseFirestore.instance
@@ -350,50 +333,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             ),
             Container(
               padding: const EdgeInsets.all(15),
-              margin: const EdgeInsets.only(
-                  top: 10, left: 25, right: 25, bottom: 10),
-              height: 70,
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey.shade600),
-                  borderRadius: BorderRadius.circular(8)),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text('Farmer',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
-                          )),
-                      Text('Dairy Farmer',
-                          style: TextStyle(
-                            color: Colors.grey[700],
-                            fontSize: 12,
-                          )),
-                    ],
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.4,
-                  ),
-                  Radio(
-                    toggleable: true,
-                    value: 0,
-                    groupValue: _value,
-                    onChanged: (value) {
-                      setState(() {
-                        _value = value;
-                      });
-                    },
-                    fillColor: MaterialStateColor.resolveWith(
-                        (states) => const Color(0xFF20BCDE)),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.all(15),
               margin: const EdgeInsets.only(left: 25, right: 25),
               height: 70,
               decoration: BoxDecoration(
@@ -481,13 +420,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             GestureDetector(
               onTap: () async {
                 await signUp();
-                if (_value == 0) {
-                  await createFarmerUser();
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => FRegistrationScreen1()));
-                } else if (_value == 1) {
+                if (_value == 1) {
                   await createExporterUser();
                   Navigator.push(
                       context,
