@@ -7,6 +7,8 @@ import 'package:safed/screens/importer_dashboard.dart';
 import 'package:safed/screens/producer_dashboard.dart';
 import 'package:safed/screens/register.dart';
 
+import 'importer_tender.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -248,7 +250,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             GestureDetector(
               onTap: () {
-                // Navigator.push(context, MaterialPageRoute(builder: (context)=> const ));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> const ExporterDashboard1()));
               },
               child: Center(
                 child: Container(
@@ -266,7 +268,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => ExporterDashboard()));
+                                builder: (context) => ExporterDashboard1()));
                       } else {
                         Navigator.push(
                             context,
